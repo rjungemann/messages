@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background-color: #ccc;
+  height: 100%;
+}
+
+html, body, input, textarea {
+  font-family: 'Lucida Grande', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-size: 1em;
+}
+
+#container {
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 0 10px #666;
+}
+
+@media (max-width: 600px) {
+  #container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+main {
+  height: 100%;
+  position: relative;
+}
+
+.view {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+header {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+header h1 {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+#index-view {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#messages-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.message-form {
+  display: flex;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.message-form input[name="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.messages-container {
+  flex-grow: 1;
+  position: relative;
+  margin-bottom: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.messages {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+
+  /* So the scrollbar is still in the right place */
+  padding-right: 10px;
+
+  overflow: scroll;
+  margin-bottom: 10px;
+}
+
+.messages .message {
+  display: flex;
+  margin-top: 10px;
+}
+
+.messages .message .avatar {
+  width: 48px;
+  height: 48px;
+  background-color: #ccc;
+  margin-right: 10px;
+}
+
+.messages .message .contents {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.messages .message .heading {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.messages .message .name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.messages .message .time {
+  display: block;
+}
+
