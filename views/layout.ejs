@@ -16,6 +16,11 @@
 
     <!-- App code -->
     <script src="/javascripts/app/init.js"></script>
+    <script>
+      <% if(name) { %>
+        app.name = "<%= name %>";
+      <% } %>
+    </script>
     <script src="/javascripts/app/models/message.js"></script>
     <script src="/javascripts/app/collections/messages.js"></script>
     <script src="/javascripts/app/views/view.js"></script>
