@@ -17,34 +17,20 @@ var messages = new Messages();
 app.set('view engine', 'ejs');
 
 app.use(partials());
-
-app.use(
-  cookieSession({
-    keys: ['secret123']
-  })
-);
-
+app.use(cookieSession({ keys: ['secret123'] }));
 app.use(bodyParser.json());
-
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Allow for messages to be accessed without a global variable.
 app.use(function (req, res, next) {
   req.messages = messages;
-
   next();
 });
 
 // Allow for io to be seen by requests for broadcasting.
 app.use(function (req, res, next) {
   req.io = io;
-
   next();
 });
 
