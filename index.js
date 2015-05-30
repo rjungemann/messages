@@ -48,66 +48,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.post('/signin.json', function (req, res) {
-  var name = req.body.name;
-
-  if (!name || !name.length) {
-    // TODO: Handle failure...
-  }
-
-  res.setHeader('Content-Type', 'application/json')
-  res.end(
-    JSON.stringify({
-      name: name
-    })
-  );
-});
-
-app.get('/messages.json', function (req, res) {
-  res.setHeader('Content-Type', 'application/json')
-  res.end(JSON.stringify(req.messages.fetch()));
-});
-
-app.post('/messages.json', function (req, res) {
-  var uuid = req.body.uuid;
-  var name = req.body.name;
-  var text = req.body.text;
-  var time = req.body.time;
-
-  if (!uuid || !uuid.length) {
-    // TODO: Handle failure...
-  }
-
-  if (!name || !name.length) {
-    // TODO: Handle failure...
-  }
-
-  if (!text || !text.length) {
-    // TODO: Handle failure...
-  }
-
-  if (!time || !time.length) {
-    // TODO: Handle failure...
-  }
-
-  var message = {
-    uuid: uuid,
-    name: name,
-    text: text,
-    time: time
-  };
-
-  req.messages.add(message);
-
-  req.io.sockets.emit('message', message);
-
-  res.setHeader('Content-Type', 'application/json')
-  res.end('');
-});
-
-app.get('*', function (req, res) {
-  res.render('index');
-});
+app.post('/signin.json', require('./lib/handlers/signin-handler'));
+app.get('/messages.json', require('./lib/handlers/messages-get-handler'));
+app.post('/messages.json', require('./lib/handlers/messages-post-handler'));
+app.get('*', require('./lib/handlers/wildcard-handler'));
 
 server = app.listen(process.env.PORT || 9292, function () {
   var port = server.address().port;

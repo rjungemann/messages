@@ -91,6 +91,7 @@ header h1 {
   top: 0;
   bottom: 0;
   left: 10px;
+  right: 0;
 
   /* So the scrollbar is still in the right place */
   padding-right: 10px;
